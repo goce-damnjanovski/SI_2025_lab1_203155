@@ -1,0 +1,17 @@
+pc@DESKTOP-GITBI8T MINGW64 /c/SI/2025/SI_2025_lab1_203155 (master)
+$ git log --oneline --graph --all
+*   3f07add (HEAD -> master, origin/master) Merge branch '7-count-tasks-per-category'
+|\
+| * 04bbf87 (origin/7-count-tasks-per-category, 7-count-tasks-per-category) Implement method countTasksPerCategory()
+* |   a0006e8 Merge pull request #11 from goce-damnjanovski/5-filter-tasks-by-category
+|\ \
+| * | 5d529ae (origin/5-filter-tasks-by-category, 5-filter-tasks-by-category) Implement method filterByCategory(String category)
+| |/
+* |   6038109 Merge pull request #10 from goce-damnjanovski/1-remove-a-task-by-name
+|\ \
+| |/
+|/|
+| * 74aebc1 (origin/1-remove-a-task-by-name, 1-remove-a-task-by-name) Implement method removeTask(String name)
+|/
+* 0d1c470 Add starter code
+* 27269b6 Initial commit

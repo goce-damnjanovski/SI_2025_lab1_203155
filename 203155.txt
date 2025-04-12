@@ -1,0 +1,176 @@
+Почетни поставувања:
+
+1) mkdir SI_2025_lab1_203155
+	=> Креираме директориум со назив SI_2025_lab1_203155
+
+2) cd SI_2025_lab1_203155
+	=> Пристапуваме до претходно креираниот директориум SI_2025_lab1_203155 .
+
+3) git init
+	=> Правиме иницијализација на git во директориумот SI_2025_lab1_203155 .
+
+4) git remote add origin https://github.com/goce-damnjanovski/SI_2025_lab1_203155.git
+	=> Го поврзуваме претходно креираниот оддалечен репозиториум со локалниот репозиториум.
+
+5) nano README.md
+	=> Креираме README.md датотека со содржина име, презиме и број на индекс(Goce Damnjanovski 203155).
+
+6) git add README.md
+	=>Ја додаваме датотеката README.md на stage.
+
+7) git commit -m "Initial commit"
+	=>Правиме commit со порака: Initial commit.
+
+8) git add SI2025Lab1Main.java
+	=>Ја додаваме на stage, претходно преземената датотека: SI2025Lab1Main.java .
+
+9) git commit -m "Add starter code"
+	=>Правиме commit со порака: Add starter code.
+
+10) git push --all origin
+	=> Ги синхронизираме сите гранки со remote репозиториумот.
+
+==================================================================
+
+Дел 1: Управување со ИТ проект
+
+11) На Github репозиториумот го отвораме табот Projects и со кликање на копчето „New Project“ креираме нов проект од тип Kanban.
+	Проектот е именуван како „SI2025“.
+
+12) Во проектот во делот Backlog ги додаваме следните 9 issues:
+	1. Remove a task by name
+	2. Find all completed tasks
+	3. List tasks sorted by name
+	4. Sort tasks by priority
+	5. Filter tasks by category
+	6. Find the highest-priority unfinished task
+	7. Count tasks per category
+	8. Mark a task as completed by name
+	9. Mark all tasks in a category as completed
+	При додавање секој issue го поврзуваме со претходно креираниот репозиториум.
+
+13) Од претходно креираните issues во Backlog ги избираме следните три за имплементирање.
+	1. Remove a task by name
+	5. Filter tasks by category
+	7. Count tasks per category
+	Ги преместуваме од Backlog во In Progress листата.
+
+14) Ги отвораме трите избрани issues и на секое од нив генерираме име на гранка и креираме гранка:
+	- За „Remove a task by name“ името на гранката е: 1-remove-a-task-by-name
+	- За „Filter tasks by category“ името на гранката е: 5-filter-tasks-by-category
+	- За „Count tasks per category“ името на гранката е: 7-count-tasks-per-category
+
+====================================================================
+
+Дел 2: Софтверски развој со користење на Git систем за контрола на верзии
+
+15) git fetch origin
+	=> Ги преземаме креираните 3 гранки од проектот на Github.
+
+16) git checkout -b 1-remove-a-task-by-name origin/1-remove-a-task-by-name
+	=>Локално ја креираме гранката 1-remove-a-task-by-name и се префрламе на истата
+
+17) nano SI2025Lab1Main.java
+	=> Ја отвораме датотеката SI2025Lab1Main.java и во истата го имплементираме методот removeTask(String name) на следниот начин:
+	public void removeTask(String name) {
+    		tasks.removeIf(task -> task.getName().equalsIgnoreCase(name));
+	}
+
+18) git add .
+	=>Ја додаваме на stage, датотеката: SI2025Lab1Main.java .
+
+19) git commit -m "Implement method removeTask(String name)"
+	=> Правиме commit со порака: "Implement method removeTask(String name)" .
+
+20) git push origin 1-remove-a-task-by-name
+	=> Ја синхронизираме локалната 1-remove-a-task-by-name гранка со гранката 1-remove-a-task-by-name на оддалечениот репозиториум.
+
+21) Креираме pull request за спојување на гранката кон master гранката со:
+	Title: Implement method removeTask(String name)
+	Description: Implementation of the method removeTask(String name) as part of the "1. Remove a task by name" issue.
+
+22) git checkout -b 5-filter-tasks-by-category origin/5-filter-tasks-by-category
+	=> Локално ја креираме гранката 5-filter-tasks-by-category и се префрламе на истата
+
+23) nano SI2025Lab1Main.java
+	=> Ја отвораме датотеката SI2025Lab1Main.java и во истата го имплементираме методот filterByCategory(String category) на следниот начин:
+	public List<Task> filterByCategory(String category) {
+        	// TODO: Implement filtering logic
+        	List<Task> filtered = new ArrayList<>();
+        	for (Task task : tasks) {
+            		if (task.getCategory().equalsIgnoreCase(category)) {
+                		filtered.add(task);
+            		}
+        	}
+        	return filtered;
+    	}
+
+24) git add .
+	=> Ја додаваме на stage, датотеката: SI2025Lab1Main.java .
+
+25) git commit -m "Implement method filterByCategory(String category)"
+	=> Правиме commit со порака: "Implement method filterByCategory(String category)"
+
+26) git push origin 5-filter-tasks-by-category
+	=> Ја синхронизираме локалната 5-filter-tasks-by-category гранка со гранката 5-filter-tasks-by-category на оддалечениот репозиториум.
+
+27) Креираме pull request за спојување на гранката кон master гранката со:
+	Title: Implement method filterByCategory(String category)
+	Description: Implementation of the method filterByCategory(String category) as part of the "5. Filter tasks by category issue".
+
+28) git checkout -b 7-count-tasks-per-category origin/7-count-tasks-per-category
+	=> Локално ја креираме гранката 7-count-tasks-per-category и се префрламе на истата
+
+29) nano SI2025Lab1Main.java
+	=> Ја отвораме датотеката SI2025Lab1Main.java и во истата го имплементираме методот countTasksPerCategory() на следниот начин:
+	public Map<String, Integer> countTasksPerCategory() {
+        	Map<String, Integer> counts = new HashMap<>();
+        	for (Task task : tasks) {
+            		String category = task.getCategory();
+            		counts.put(category, counts.getOrDefault(category, 0) + 1);
+        	}
+        	return counts;
+    	}
+
+30) git add .
+	=> Ја додаваме на stage, датотеката: SI2025Lab1Main.java .
+
+31) git commit -m "Implement method countTasksPerCategory()"
+	=> Правиме commit со порака: "Implement method countTasksPerCategory()"
+
+32) git push origin 7-count-tasks-per-category
+	=> Ја синхронизираме локалната 7-count-tasks-per-category гранка со гранката 7-count-tasks-per-category на оддалечениот репозиториум.
+
+33) Креираме pull request за спојување на гранката кон master гранката со:
+	Title: Implement method countTasksPerCategory()
+	Description: Implementation of the method countTasksPerCategory() as part of the "7. Count tasks per category" issue.
+
+34) Го потврдуваме спојувањето на гранката 1-remove-a-task-by-name со master гранката со клик на копчето „Merge pull request“.
+
+35) Го потврдуваме спојувањето на гранката 5-filter-tasks-by-category со master гранката со клик на копчето „Merge pull request“.
+
+36) Правиме проверка во Github проектот и евидентираме дека issues: „Remove a task by name issue“ и „Filter tasks by category issue“ се во листата Done.
+
+37) git checkout master
+	=> Се префрламе на гранката master
+
+38) git pull origin master
+	=> Правиме update-ирање на локалната master гранка со промените на оддалечената master гранка.
+
+39)  git merge 7-count-tasks-per-category
+	=> Ја спојуваме гранката 7-count-tasks-per-category со master гранката
+
+40) git push origin master
+	=> Ја синхронизираме локалната master гранка со гранката master на оддалечениот репозиториум.
+
+41) git log --oneline --graph --all
+	=> Ги печатиме досегашните git логови.
+
+42) git add logs.txt 203155.txt
+	=> Ги додаваме датотеките logs.txt и 203155.txt на stage.
+
+43) git commit -m "Final commit"
+	=> Правиме последен commit со порака: Final commit.
+
+44) git push --all origin
+	=> Ги синхронизираме сите гранки со remote репозиториумот.
